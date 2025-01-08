@@ -1,0 +1,41 @@
+import 'package:advanced_project/features/home/data/models/specializations_response_model.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theming/app_colors.dart';
+import '../../../../core/theming/stylea.dart';
+
+class DoctorSpecializationListViewItem extends StatelessWidget {
+  DoctorSpecializationListViewItem(
+      {super.key, this.specializationsData, required this.itemIndex});
+  final int itemIndex;
+  final SpecializationsData? specializationsData;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsetsDirectional.only(
+        start: itemIndex == 0 ? 0 : 24.w,
+      ),
+      child: Column(
+        children: [
+          CircleAvatar(
+            radius: 28,
+            backgroundColor: AppColors.lightBlue,
+            child: SvgPicture.asset(
+              'assets/svgs/notification.svg',
+              height: 40.h,
+              width: 40.w,
+            ),
+          ),
+          verticalSpacing(8),
+          Text(
+            '${specializationsData?.name ?? 'j'}',
+            style: TextStyles.font12BlueRegular,
+          ),
+        ],
+      ),
+    );
+  }
+}
